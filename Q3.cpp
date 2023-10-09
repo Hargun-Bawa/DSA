@@ -1,19 +1,19 @@
+#include <iostream>
+using namespace std;
 
 ///  I changed all of the template functions to int values for testing purposes
 /// the algorithms all work and are as efficient as I can make them without actually
 /// deep dive researching sorting and searching algorithms.
 
-
-void insert(int sortedList[], int n, int value);
+Template<typename T>
+void insert(T sortedList[], int n, T value);
 // This function inserts the "value" in the "sortedList" including "n" values sorted in ascending order; the list must be remained sorted at the end of the execution of the function. It is assumed that the list has enough room for the new value.
-void remove(int sortedList[], int n, int value); 
+Template<typename T>
+void remove(T sortedList[], int n, T value); 
 // Assuming that the "sortedList" is a list of "n" values sorted in ascending order, this function removes the "value" from the list (if exists); the list must be remained sorted at the end of the execution of the function.
-void remove1(int unorderedSeq[], int n, int value); 
+Template<typename T>
+void remove1(T unorderedSeq[], int n, T value); 
 // Assuming that the "unorderedSeq" is an unordered sequence of "n" distinct values, this function rem
-
-
-#include <iostream>
-using namespace std;
 
 int main() {
 	//insert(ta,  9, 11);
@@ -22,13 +22,14 @@ int main() {
 	remove1(ta1, 10, 11);
 	return 0;
 }
-void insert(int sortedList[], int n, int value)
+Template<typename T>
+void insert(T sortedList[], int n, T value)
 {
 	/// x  is the tracker for binary sort
 	int x = n / 2;
 	/// g and r are both temporary holders for T objects, could be pointers
-	int	g;
-	int r;
+	T g;
+	T r;
 	bool check = false;
 	while (!check) {
 		
@@ -74,13 +75,11 @@ void insert(int sortedList[], int n, int value)
 
 	}
 };
-
-void remove(int sortedList[], int n, int value)
+Template<typename T>
+void remove(T sortedList[], int n, T value)
 {
 	/// Usint binary search again
 	int x = n / 2;
-	int	g;
-	int r;
 	bool check = false;
 	/// O (log n)
 	while (sortedList[x] != value ) {
@@ -100,7 +99,8 @@ void remove(int sortedList[], int n, int value)
 		sortedList[i] = sortedList[i + 1];
 	}
 };
-void remove1(int unorderedSeq[], int n, int value)
+Template<typename T>
+void remove1(T unorderedSeq[], int n, T value)
 {
 	/// I couldnt think of any way to do this faster than linear 
 	/// 
