@@ -1,7 +1,9 @@
 #include <iostream>
 using namespace std;
 
-void sort(int[], int);
+Template<typename T>
+void sort(T[], int);
+
 int main()
 {
 	int test[8] = {6,2,7,18,9,75,1,61};
@@ -12,11 +14,11 @@ int main()
 		cout << test[i] << " ";
 	}
 }
-
-void sort(int list[], int size)
+Template<typename T>
+void sort(T list[], int size)
 {
-	/// temporary array of ints 
-	int* temp = new int[size];
+	/// temporary array of T 
+	T* temp = new T[size];
 	int smaller = 0;
 	/// was trying to do something clever where if an array
 	/// had a smallest element found, it would no longer be compared
@@ -25,7 +27,7 @@ void sort(int list[], int size)
 	for(int i = 0; i < size; i++)
 	{
 		/// value being tested
-		int tester = list[i];
+		T tester = list[i];
 		///reiterate through the loop to compare values
 		///and find smallest
 		for(int g = 0; g < size; g++)
@@ -43,7 +45,7 @@ void sort(int list[], int size)
 	}
 	for(int i =0; i < 8; i++)
 	{
-		list[i] =temp[i] ;
+		list[i] =temp[i];
 	}
 }
 
