@@ -100,8 +100,11 @@ void insert(T sortedList[], int n, T value){
         swap(sortedList[i],sortedList[i - 1]);
     }
     sortedList[mid] = value;
-// time complexity: W(n) = O(n) .. B(n) = log(n)
+// time complexity: W(n) = O(n) .. B(n) = O(log(n))
 }
+
+
+
 Template<typename T>
 void remove(T sortedList[], int &n, T value)
 {
@@ -126,6 +129,34 @@ void remove(T sortedList[], int &n, T value)
 		sortedList[i] = sortedList[i + 1];
 	}
 };
+
+template<typename T>
+void remove(T sortedList[], int& n, T value){
+    int low = 0;
+    int high = n;
+    int mid = 0;
+    bool flag = false;
+// I'm just using the same algorithm for the insert ftn
+    while (high >= low && !flag) {
+        mid = (low + high) / 2;
+        if (value < sortedList[mid])
+            high = mid - 1;
+        else if (value == sortedList[mid]){
+//Here I immediately start swapping then I terminate the while loop with setting the flag to true
+            for(int i = mid + 1; i < n; i++)
+                swap(sortedList[i],sortedList[i - 1]);
+            n--;
+            flag = true;
+        }
+        else
+            low = mid + 1;
+// If the item isn't in the list then nothing happens
+    }
+// Time complexity: W(n) = O(n) .. B(n) = O(log(n))
+}
+
+
+
 Template<typename T>
 void remove1(T unorderedSeq[], int &n, T value)
 {
