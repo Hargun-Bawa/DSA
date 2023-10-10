@@ -76,33 +76,32 @@ void insert(T sortedList[], int n, T value)
 	}
 };
 
-
-/*
 template<typename T>
 void insert(T sortedList[], int n, T value){
     int low = 0;
     int high = n;
     int mid = 0;
     bool flag = false;
+//I mixed binary search with bubble swap
     while (high >= low && !flag) {
         mid = (low + high) / 2;
         if (value < sortedList[mid])
             high = mid - 1;
         else if (value == sortedList[mid]){
+	    mid++;
             flag = true;
+//if the value is already in the list we can insert it right after it
         }
         else
             low = mid + 1;
     }
+//after finding out where it should go, we can shuffle what we need to down then insert at the "mid" idex
     for(int i = n; i > mid; i--){
         swap(sortedList[i],sortedList[i - 1]);
     }
     sortedList[mid] = value;
+// time complexity: W(n) = O(n) .. B(n) = log(n)
 }
-*/
-
-
-
 Template<typename T>
 void remove(T sortedList[], int &n, T value)
 {
