@@ -55,3 +55,25 @@ void sort(T list[], int size)
 	 * 	for(int i = 
 	 */
 
+template<typename T>
+void sort(T list[], int n){
+    int i = 0;
+    do{
+        int less = 0;
+        for(int j = 0; j < n; j++){
+            if(list[i] > list[j])
+                less++;
+            }
+        if(less != i){
+            T temp = list[less];
+            list[less] = list[i];
+            list[i] = temp;
+        }
+        else{
+            i++;
+        }
+    }while(i != n - 1);
+// Time complexity: T(n) = O(n^2) :/
+
+}
+
