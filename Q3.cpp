@@ -9,10 +9,10 @@ Template<typename T>
 void insert(T sortedList[], int n, T value);
 // This function inserts the "value" in the "sortedList" including "n" values sorted in ascending order; the list must be remained sorted at the end of the execution of the function. It is assumed that the list has enough room for the new value.
 Template<typename T>
-void remove(T sortedList[], int n, T value); 
+void remove(T sortedList[], int &n, T value); 
 // Assuming that the "sortedList" is a list of "n" values sorted in ascending order, this function removes the "value" from the list (if exists); the list must be remained sorted at the end of the execution of the function.
 Template<typename T>
-void remove1(T unorderedSeq[], int n, T value); 
+void remove1(T unorderedSeq[], int &n, T value); 
 // Assuming that the "unorderedSeq" is an unordered sequence of "n" distinct values, this function rem
 
 int main() {
@@ -75,8 +75,36 @@ void insert(T sortedList[], int n, T value)
 
 	}
 };
+
+
+/*
+template<typename T>
+void insert(T sortedList[], int n, T value){
+    int low = 0;
+    int high = n;
+    int mid = 0;
+    bool flag = false;
+    while (high >= low && !flag) {
+        mid = (low + high) / 2;
+        if (value < sortedList[mid])
+            high = mid - 1;
+        else if (value == sortedList[mid]){
+            flag = true;
+        }
+        else
+            low = mid + 1;
+    }
+    for(int i = n; i > mid; i--){
+        swap(sortedList[i],sortedList[i - 1]);
+    }
+    sortedList[mid] = value;
+}
+*/
+
+
+
 Template<typename T>
-void remove(T sortedList[], int n, T value)
+void remove(T sortedList[], int &n, T value)
 {
 	/// Usint binary search again
 	int x = n / 2;
@@ -100,7 +128,7 @@ void remove(T sortedList[], int n, T value)
 	}
 };
 Template<typename T>
-void remove1(T unorderedSeq[], int n, T value)
+void remove1(T unorderedSeq[], int &n, T value)
 {
 	/// I couldnt think of any way to do this faster than linear 
 	/// 
