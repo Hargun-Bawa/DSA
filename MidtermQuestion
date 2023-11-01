@@ -22,7 +22,8 @@ int PostfixExpression::length(){
     return expression.length();
 }
 int main(){
-    PostfixExpression a("1234");
+    PostfixExpression a("12467");
+    cout << a.nextToken() << endl;
+    cout << a.nextToken() << endl;
     cout << a.length() << endl;
-    
 }
